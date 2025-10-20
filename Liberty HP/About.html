@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIBERTY | About</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #0A0A0A;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* 背景 */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: url('LibertyIcon.png') center/cover no-repeat;
+      opacity: 0.15;
+      filter: blur(2px);
+      z-index: 0;
+    }
+
+    /* 流れる光エフェクト */
+    .neon-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100vh;
+      background: linear-gradient(180deg, transparent, #00ffff, transparent);
+      opacity: 0.25;
+      animation: moveLine 8s linear infinite;
+    }
+    @keyframes moveLine {
+      0% { transform: translateY(100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+
+    /* ナビゲーション */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: #111;
+      border-bottom: 4px solid #00ffff;
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+      position: relative;
+      z-index: 3;
+    }
+    nav .logo img {
+      width: 60px;
+      height: auto;
+      display: block;
+    }
+    nav .menu {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    nav .menu a {
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 10px 25px;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+      transition: 
+        transform 0.3s,
+        color 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s,
+        text-shadow 0.3s;
+    }
+    nav .menu a:hover {
+      color: #C400FF;
+      border-color: #C400FF;
+      box-shadow: 0 0 25px #C400FF, 0 0 30px #00ffff;
+      text-shadow: 0 0 10px #C400FF, 0 0 20px #00ffff;
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      background: #050505;
+      padding: 30px;
+      color: #888;
+      font-size: 0.9em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-section {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about-section h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  font-size: 1.5em;
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.about-section p, .about-section ul {
+  color: #ccc;
+  font-size: 1.2em;
+  line-height: 1.7em;
+  letter-spacing: 1px;
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-section ul li {
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+  <div class="neon-lines">
+    <div class="line" style="left:10%; animation-delay: 0s;"></div>
+    <div class="line" style="left:40%; animation-delay: 3s;"></div>
+    <div class="line" style="left:70%; animation-delay: 6s;"></div>
+  </div>
+
+  <nav>
+    <div class="logo">
+      <img src="LibertyLogo.png" alt="LIBERTY Logo">
+    </div>
+    <div class="menu">
+      <a href="Liberty HP.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Citizen.html">市民の声</a>
+    </div>
+  </nav>
+
+  <section class="about-section">
+  <h2>ABOUT LIBERTY</h2>
+  <p>現実のしがらみを忘れられる「もう一つの都市」。市民が自由に意見を出し合える場所です。</p>
+
+  <h3>LIBERTYがオススメな人</h3>
+  <ul>
+    <li>友達が欲しい人</li>
+    <li>ワイワイしたい人</li>
+    <li>現実で吐けない悩みがある人</li>
+    <li>ストレスのはけ口が欲しい人</li>
+  </ul>
+
+<h4 style="font-family: 'Orbitron', sans-serif; color: #00ffff; text-shadow: 0 0 10px #00ffff; font-size: 1.8em; margin-top: 60px; margin-bottom: 20px;">
+  HISTORY
+</h4>
+<p style="color: #ccc; font-size: 1.1em; line-height: 1.9em; letter-spacing: 0.5px; text-align: left;">
+  20XX年（正確な年は不明）、とあるサーバーをトラブルが原因で去った二人が、初代「Liberty」を創立。<br><br>
+  当時からテーマは「近未来都市」であり、「独立」という意味を込めて“Liberty”という名が生まれました。<br><br>
+  しかしその後、様々な問題により最高管理者が不在となり、数か月間の空白期間が発生。<br>
+  2025年、復活した最高管理者が再びLibertyを再設立し、初代運営メンバーを「管理局員」として迎え入れ、本格的な活動を開始しました。<br><br>
+  この再始動を機に、Libertyは「ただの雑談サーバー」から、「心の拠り所」となることを目指すコミュニティへと進化。 現在のLibertyはこうしてできました。
+</p>
+</section>
+
+  <footer>
+    © 2025 LIBERTY | 自由都市 - City of Freedom.
+  </footer>
+
+</body>
+</html>

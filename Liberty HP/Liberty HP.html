@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIBERTY | 自由都市</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #0A0A0A;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* 背景 */
+    .background {
+      position: fixed;
+      inset: 0;
+      background: url('LibertyIcon.png') center/cover no-repeat;
+      opacity: 0.15;
+      filter: blur(2px);
+      z-index: 0;
+    }
+
+    /* 流れる光エフェクト */
+    .neon-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100vh;
+      background: linear-gradient(180deg, transparent, #00ffff, transparent);
+      opacity: 0.25;
+      animation: moveLine 8s linear infinite;
+    }
+    @keyframes moveLine {
+      0% { transform: translateY(100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      padding: 130px 20px 100px;
+      z-index: 2;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.8em;
+      color: #00ffff;
+      text-shadow: 0 0 20px #00ffff, 0 0 40px #C400FF;
+      margin: 0;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff, 0 0 20px #C400FF; }
+      to { text-shadow: 0 0 30px #00ffff, 0 0 60px #C400FF; }
+    }
+    header p {
+      color: #ccc;
+      font-size: 1.2em;
+      margin-top: 15px;
+      letter-spacing: 1px;
+      line-height: 1.7em;
+    }
+    a.join-btn {
+      display: inline-block;
+      margin-top: 40px;
+      background: linear-gradient(90deg, #00ffff, #C400FF);
+      padding: 15px 40px;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #00ffff;
+    }
+    a.join-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #C400FF, 0 0 60px #00ffff;
+    }
+
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2em;
+    }
+
+    /* カード群 */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,255,255,0.2);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+      transition: 0.3s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(196,0,255,0.5);
+      box-shadow: 0 0 25px rgba(196,0,255,0.4);
+    }
+    .card h3 {
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #ddd;
+      line-height: 1.6em;
+      font-size: 0.95em;
+    }
+
+    footer {
+      text-align: center;
+      background: #050505;
+      padding: 30px;
+      color: #888;
+      font-size: 0.9em;
+      z-index: 2;
+      position: relative;
+    }
+
+    nav {
+  text-align: center;
+  border-bottom: 4px solid #00ffff; 
+  box-shadow: 0 0 5px #00ffff, 0 0 20px #00ffff; /* 光の影 */
+  display: flex;            /* 横並びにする */
+  justify-content: space-between; /* 位置関係 */
+  align-items: center;      /* 上下中央揃え */
+  padding: 20px 30px;       /* 上下の余白 + 左右の余白 */
+  background: #111;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+
+  position: relative;
+  z-index: 3; /* 背景より前に出す */
+}
+
+/* ロゴを含む要素のレイアウト設定 */
+nav .logo {
+  flex-shrink: 0; /* 縮小しないように維持 */
+  margin-left: 30px; /* メニューリンクとの間に隙間を作る */
+}
+
+/* ロゴ画像本体のサイズ設定 */
+nav .logo img {
+  width: 60px; /* 👈 ここを希望のサイズに！ */
+  height: auto; /* 縦横比を維持 */
+  display: block;
+}
+
+    nav a {
+  color: #00ffff;
+  transition: 0.3s;             /* ホバーでアニメーション */
+  font-family: 'Orbitron', sans-serif;  /* 近未来フォント */
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 25px;
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; /* リンクの光 */
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* 文字に光 */
+  transition: 0.3s;
+}
+
+/*メニューの並び*/
+nav .menu {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* 縮小させない */
+    gap: 50px;
+}
+
+/* メニューリンク共通 */
+nav .menu a {
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 25px;
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  display: inline-block; /* ←ホバーが効くようになる */
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  transition: 
+    transform 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    text-shadow 0.3s;
+}
+
+/* ホバーしたときの変化 */
+nav .menu a:hover {
+  color: #C400FF;                      /* 文字の色を変える */
+  border-color: #C400FF;               /* 枠の色を変える */
+  box-shadow: 0 0 25px #C400FF, 0 0 30px #00ffff; /* 光を強くする */
+  text-shadow: 0 0 10px #C400FF, 0 0 20px #00ffff;
+  transform: translateY(-5px) scale(1.1); /* 少し拡大して傾ける */
+}
+
+.details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+/*詳細の表示設定*/
+.card.open .details {
+  max-height: 200px; /* 詳細が開く高さ */
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  align-items: start; 
+}
+
+  </style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="neon-lines">
+  <div class="line" style="left:10%; animation-delay: 0s;"></div>
+  <div class="line" style="left:40%; animation-delay: 3s;"></div>
+  <div class="line" style="left:70%; animation-delay: 6s;"></div>
+</div>
+
+<nav>
+  <div class="logo">
+      <img src="LibertyLogo.png" alt="LIBERTY Logo" />
+  </div>
+
+  <div class="menu">
+      <a href="Liberty HP.html">Home</a>
+      <a href="About.html">About</a>
+      <a href="Citizen.html">市民の声</a>
+  </div>
+</nav>
+<header>
+  <h1>LIBERTY</h1>
+  <p>― 自由都市 ―<br>
+    現実のしがらみを忘れられる「もう一つの都市」</p>
+  <a class="join-btn" href="https://discord.gg/Cy5NthH8h6" target="_blank" data-text="サーバーに参加">サーバーに参加</a>
+
+</header>
+
+<section>
+  <h2>🏙️ LIBERTYの4つの良さ</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>🗳️ 目安箱</h3>
+      <p>市民の声を大切にしています。</p>
+      <div class="details">
+    <p>気楽に意見を発信できる目安箱を設置し、市民の意見を取り入れています。</p>
+  </div>
+    </div>
+
+    <div class="card">
+      <h3>❤️‍🩹 お悩み相談</h3>
+      <p>現実で言えない悩みを打ち明けられます</p>
+      <div class="details">
+        <p>悩みを否定されたりするのが怖くて現実じゃ言えなくても、ここなら吐くことができます。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>💭 雑談広場</h3>
+      <p>和気あいあいと話せます</p>
+      <div class="details">
+        <p>個性の強いメンバーと楽しく話せます。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⚖️ 適度なルール</h3>
+      <p>みんなが安心して暮らせる適度なルール</p>
+      <div class="details">
+        <p>厳しすぎず、緩すぎない。秩序と自由を両立できるルールを設けています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>💎 市民の声</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    「まんこ」<br>
+    「まんこ」<br>
+    「まんこ」</p>
+</section>
+
+<footer>
+  © 2025 LIBERTY | 自由都市 - City of Freedom.
+</footer>
+
+<script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', (event) => {
+      // クリックがカード内のリンクやボタンじゃない場合だけ動作
+      if (event.target.closest('a, button')) return;
+
+      // 他のカードを閉じる
+      document.querySelectorAll('.card').forEach(c => {
+        if (c !== card) c.classList.remove('open');
+      });
+
+      // 押したカードだけ開閉する
+      card.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
