@@ -4,21 +4,21 @@
   <!-- トップページ -->
   <url>
     <loc>https://gya110510.github.io/Liberty/LibertyHP/index.html</loc>
-    <lastmod>2025-10-25</lastmod>
+    <lastmod>2025-11-02</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- Aboutページ -->
   <url>
     <loc>https://gya110510.github.io/Liberty/LibertyHP/About.html</loc>
-    <lastmod>2025-10-25</lastmod>
+    <lastmod>2025-11-02</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Citizenページ -->
   <url>
     <loc>https://gya110510.github.io/Liberty/LibertyHP/Citizen.html</loc>
-    <lastmod>2025-10-25</lastmod>
+    <lastmod>2025-11-02</lastmod>
     <priority>0.8</priority>
   </url>
 
